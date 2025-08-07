@@ -49,9 +49,7 @@ namespace To_Do_List
                         string task = Console.ReadLine();
                         Console.WriteLine("Enter the time required to complete this task in minutes");
                         int time = int.Parse(Console.ReadLine());
-                        new requiredTime(task, time);
-                        Addtasks(tasksList, task);
-                        DisplayList(tasksList);
+                        
                         if (time <= 0)
                         {
                             while (time <= 0)
@@ -65,6 +63,12 @@ namespace To_Do_List
 
 
                         }
+                        else
+                        {
+                            new requiredTime(task, time);
+                            Addtasks(tasksList, task);
+                            DisplayList(tasksList);
+                        }
 
                     }
                     catch (FormatException)
@@ -77,7 +81,7 @@ namespace To_Do_List
 
 
                 }
-                if (option == "2")
+                else if (option == "2")
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
 
@@ -90,14 +94,14 @@ namespace To_Do_List
 
 
                 }
-                if (option == "3")
+                else if (option == "3")
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     
                     DisplayList(tasksList);
 
                 }
-                if (option == "4")
+                else if (option == "4")
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
 
@@ -110,7 +114,7 @@ namespace To_Do_List
                     DisplayList(tasksList);
 
                 }
-                if (option == "Exist")
+                else if (option == "Exist")
                 {
                     Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.WriteLine("Hope you had a great experience!");
