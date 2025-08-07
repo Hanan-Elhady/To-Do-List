@@ -12,7 +12,6 @@ namespace To_Do_List
     {
         static void Main(string[] args)
         {
-
            
 
            
@@ -50,6 +49,9 @@ namespace To_Do_List
                         string task = Console.ReadLine();
                         Console.WriteLine("Enter the time required to complete this task in minutes");
                         int time = int.Parse(Console.ReadLine());
+                        new requiredTime(task, time);
+                        Addtasks(tasksList, task);
+                        DisplayList(tasksList);
                         if (time <= 0)
                         {
                             while (time <= 0)
@@ -108,28 +110,29 @@ namespace To_Do_List
                     DisplayList(tasksList);
 
                 }
+                if (option == "Exist")
+                {
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.WriteLine("Hope you had a great experience!");
+                    return;
+                }
                 else
                 {
-                    Console.WriteLine("enter Exist if you want to cloose the list ");
-                    if (option == "Exist")
-                    {
-                        Console.ForegroundColor = ConsoleColor.Magenta;
-
-                        return;
-                    }
+                    Console.WriteLine("Invalid input,so Try again ");
+                    
                 }
 
 
             }
 
 
-        }
-
-
-
-
-
-        //welcom message
+        } 
+        
+        
+        
+        
+        
+        
         static void saywelcom()
         {
             string s1 = "-----------------------------";
@@ -183,9 +186,10 @@ namespace To_Do_List
             }
             else
             {
+                Console.WriteLine("Now your List contains");
                 foreach (string items in tasks)
                 {
-                    Console.WriteLine("Now your List contains");
+                   
                     Console.WriteLine($"*{items}");
                 }
             }
