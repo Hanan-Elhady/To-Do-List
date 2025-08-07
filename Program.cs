@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,24 +12,16 @@ namespace To_Do_List
     {
         static void Main(string[] args)
         {
-            string s1 = "-----------------------------";
-            string s2 = "Here is To-Do-List ,Welcome";
-            string s3 = "-----------------------------";
 
-            int width = Console.WindowWidth;
-            int center = (width - s2.Length) / 2;
-
-            Console.ForegroundColor = ConsoleColor.Cyan;
-
-            Console.WriteLine(new string(' ', center) + s1);
-            Console.WriteLine(new string(' ', center) + s2);
-            Console.WriteLine(new string(' ', center) + s3);
+           
 
            
             ArrayList tasksList = new ArrayList();
             string option = "";
             while (option != "Exist")
             {
+                saywelcom();
+
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("Enter 1 to add a new task");
               
@@ -99,7 +91,7 @@ namespace To_Do_List
                 if (option == "3")
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
-
+                    
                     DisplayList(tasksList);
 
                 }
@@ -113,6 +105,8 @@ namespace To_Do_List
                     string replace = Console.ReadLine();
                     Removetasks(tasksList, task);
                     Addtasks(tasksList, replace);
+                    DisplayList(tasksList);
+
                 }
                 else
                 {
@@ -124,17 +118,34 @@ namespace To_Do_List
                         return;
                     }
                 }
+
+
             }
 
 
-        } 
-        
-        
-        
-        
-        
-        
-        
+        }
+
+
+
+
+
+        //welcom message
+        static void saywelcom()
+        {
+            string s1 = "-----------------------------";
+            string s2 = "Here is To-Do-List ,Welcome";
+            string s3 = "-----------------------------";
+
+            int width = Console.WindowWidth;
+            int center = (width - s2.Length) / 2;
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+
+            Console.WriteLine(new string(' ', center) + s1);
+            Console.WriteLine(new string(' ', center) + s2);
+            Console.WriteLine(new string(' ', center) + s3);
+
+        }
         
         
         
@@ -165,11 +176,20 @@ namespace To_Do_List
         } //this Method VIEW tasks
         static void DisplayList(ArrayList tasks)
         {
-            foreach(string items in tasks)
+            if (tasks.Count == 0)
             {
-                Console.WriteLine("Now your List contains");
-                Console.WriteLine($"*{items}");
+                Console.WriteLine("you don't have list yet");
+                Console.WriteLine("Create Your list");
             }
+            else
+            {
+                foreach (string items in tasks)
+                {
+                    Console.WriteLine("Now your List contains");
+                    Console.WriteLine($"*{items}");
+                }
+            }
+
         }
         class requiredTime
         {
